@@ -45,7 +45,7 @@ def find_angle_between_hands(time: typing.Tuple[int, int], realistic_clock: bool
 
 
 def main():
-    time = (11, 61)
+    time = (0, 30)
     angle = find_angle_between_hands(time)
     print(f"Angle between {time[0]} hour(s) hand and {time[1]} minute(s) hand is {angle[0]}°{angle[1]}'")
 
