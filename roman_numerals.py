@@ -19,6 +19,7 @@ Rules:
 from typing import Optional
 import re
 
+
 ROMAN_TO_INT_DICT = {
     'm': 1000,
     'd': 500,
@@ -31,6 +32,7 @@ ROMAN_TO_INT_DICT = {
 
 
 class RomanNumeral:
+    """Helper class to hold info about character"""
     def __init__(self, char: str, i: int):
         self.roman = char.lower()
         self.arabic = self.map_roman_to_arabic(self.roman)
@@ -79,20 +81,20 @@ class RomanNumeralsConverter:
                 return True, len(match[0])
         return False, None
 
-    def check_if_valid(self) -> Optional[str]:
+    def check_if_valid(self) -> bool:
         """Check for obvious mistakes"""
         if not all([char.is_valid for char in self.as_char_list]):
             # GI
-            return None
+            return False
         for letter in self.NON_REPEATING_LETTERS:
             if self.roman_numeral.count(letter) > 1:
                 # VV
-                return None
+                return False
         for letter in self.REPEATING_LETTERS:
             if re.search(r"%s{4,}" % letter, self.roman_numeral):
                 # IIII
-                return None
-        return self.roman_numeral.lower()
+                return False
+        return True
 
     def next_char(self, i: int) -> Optional[RomanNumeral]:
         try:
@@ -133,6 +135,7 @@ class RomanNumeralsConverter:
                 group_value = char.arabic * group_len
                 next_group_start = self.next_char(char.i + group_len - 1)
                 if next_group_start and group_value < next_group_start.arabic:
+                    # IIIX
                     as_int = None
                     break
             as_int = self.calculate_by_roman_num_rules(char, next_char, as_int)

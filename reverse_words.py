@@ -1,5 +1,3 @@
-import re
-from typing import Optional
 """
 Script to reverse each word in a string.
 Assumptions:
@@ -10,6 +8,8 @@ Assumptions:
 - words with "-/'" etc are considered as one word
 E.g. "In a hole in the ground there lived a hobbit." -> "ni a eloh ni eht dnuorg ereht devil a tibboh."
 """
+import re
+from typing import Optional
 
 
 def reverse_words_in_a_string(text: Optional[str]) -> Optional[str]:
