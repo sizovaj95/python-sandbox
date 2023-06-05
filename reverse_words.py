@@ -25,12 +25,3 @@ def reverse_words_in_a_string(text: Optional[str]) -> Optional[str]:
         new_text.append(new_word)
     new_text = ' '.join(new_text)
     return new_text
-
-
-def main():
-    text = 'In a hole in the ground there lived a hobbit.'
-    new_text = reverse_words_in_a_string(text)
-
-
-if __name__ == "__main__":
-    main()

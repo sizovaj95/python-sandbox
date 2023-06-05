@@ -48,13 +48,3 @@ def find_angle_between_hands(time: tuple[int, int], realistic_clock: bool = True
     angle_between = abs(hour_angle - minutes_angle)
     angle_between = convert_angle_to_degrees_and_minutes(angle_between)
     return angle_between
-
-
-def main():
-    time = (0, 30)
-    angle = find_angle_between_hands(time)
-    print(f"Angle between {time[0]} hour(s) hand and {time[1]} minute(s) hand is {angle[0]}°{angle[1]}'")
-
-
-if __name__ == "__main__":
-    main()
